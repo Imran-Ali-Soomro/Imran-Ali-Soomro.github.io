@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Imran Ali Soomro — Machine Learning Researcher</title>
+<meta name="description" content="Imran Ali Soomro — machine learning researcher (M.S. Software Engineering, Hohai University) working on the robustness of image watermarking, watermark-removal attacks, diffusion models, and AI safety." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#F6F7F9;
+    --panel:#FFFFFF;
+    --ink:#0F1A2B;
+    --muted:#556079;
+    --faint:#8A93A6;
+    --line:#E4E8EE;
+    --accent:#0E6E63;         /* deep spectral teal */
+    --accent-deep:#0A4F48;
+    --signal:#5A6ACF;         /* the "hidden signal" hue, used faintly */
+    --maxw:900px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Spectral",Georgia,serif;font-size:18px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{color:var(--accent-deep);text-decoration:underline;text-underline-offset:3px;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+  h1,h2,h3,nav,.mono,.tag,.eyebrow,.navlink,.btn{font-family:"Space Grotesk",system-ui,sans-serif;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:20;background:rgba(246,247,249,.82);
+    backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);
+  }
+  .bar{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{font-weight:600;font-size:16px;letter-spacing:-.01em;}
+  .brand span{color:var(--accent);}
+  nav{display:flex;gap:22px;flex-wrap:wrap;}
+  .navlink{font-size:14.5px;color:var(--muted);font-weight:500;}
+  .navlink:hover{color:var(--ink);text-decoration:none;}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px;color:var(--ink);cursor:pointer;}
+
+  section{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .divide{max-width:var(--maxw);margin:0 auto;}
+  .divide hr{border:none;border-top:1px solid var(--line);margin:64px 24px;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:96px 24px 40px;overflow:hidden;}
+  .hero .signal{
+    position:absolute;inset:0;pointer-events:none;opacity:0;
+    transition:opacity 1.4s ease;
+  }
+  .hero.revealed .signal{opacity:1;}
+  .hero-inner{position:relative;max-width:var(--maxw);margin:0 auto;}
+  .hero h1{
+    font-size:clamp(40px,8vw,74px);line-height:1.02;letter-spacing:-.03em;
+    font-weight:600;margin:0 0 14px;
+  }
+  .role{font-family:"Space Grotesk",sans-serif;font-size:clamp(16px,2.4vw,19px);color:var(--muted);font-weight:500;margin:0 0 26px;}
+  .role b{color:var(--ink);font-weight:600;}
+  .lede{font-size:clamp(19px,2.6vw,23px);line-height:1.5;max-width:64ch;color:var(--ink);margin:0 0 30px;}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  .btn{
+    display:inline-block;font-size:14.5px;font-weight:500;padding:11px 18px;border-radius:10px;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn.primary:hover{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff;}
+
+  /* ---------- section headings ---------- */
+  .h-wrap{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;}
+  h2{font-size:clamp(24px,3.4vw,30px);letter-spacing:-.02em;font-weight:600;margin:0;}
+  .h-wrap .idx{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--accent);font-weight:600;}
+
+  p{margin:0 0 18px;}
+  .prose{max-width:68ch;}
+  .prose p{color:#1c2740;}
+
+  /* research interests */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:6px 0 0;}
+  .chips li{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--ink);background:var(--panel);
+    border:1px solid var(--line);border-radius:999px;padding:8px 15px;}
+
+  /* ---------- publications ---------- */
+  .pubgroup{margin-top:30px;}
+  .pubgroup h3{font-size:15px;font-weight:600;color:var(--accent);margin:0 0 14px;font-weight:600;letter-spacing:.01em;}
+  .pub{padding:16px 0;border-top:1px solid var(--line);}
+  .pub:first-of-type{border-top:none;}
+  .pub .authors{font-family:"Space Grotesk",sans-serif;font-size:14.5px;color:var(--muted);margin:0 0 4px;}
+  .pub .authors b{color:var(--ink);font-weight:600;}
+  .pub .title{font-size:18.5px;font-weight:500;line-height:1.4;margin:0 0 4px;}
+  .pub .venue{font-style:italic;color:#334;}
+  .pub .meta{font-family:"Space Grotesk",sans-serif;font-size:13.5px;color:var(--faint);margin-top:4px;}
+  .pub.flag{
+    border-left:3px solid var(--accent);padding-left:18px;margin-left:-21px;
+    background:linear-gradient(90deg,rgba(14,110,99,.05),transparent 60%);
+    border-top:1px solid var(--line);
+  }
+  .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--accent-deep);
+    background:rgba(14,110,99,.12);border-radius:6px;padding:3px 9px;margin-left:2px;vertical-align:middle;}
+
+  /* ---------- projects ---------- */
+  .proj{padding:26px 0;border-top:1px solid var(--line);}
+  .proj:first-of-type{border-top:none;}
+  .proj h3{font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em;}
+  .proj .kicker{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--muted);margin:0 0 14px;}
+  .proj ul{margin:0 0 12px;padding-left:20px;}
+  .proj li{margin-bottom:7px;color:#1c2740;}
+  .stack{font-family:"Space Grotesk",sans-serif;font-size:13.5px;color:var(--faint);}
+  .stack b{color:var(--muted);font-weight:600;}
+  .more{margin-top:26px;}
+  .more dl{margin:0;display:grid;grid-template-columns:1fr;gap:0;}
+  .more .row{display:grid;grid-template-columns:230px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line);}
+  .more dt{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:15px;margin:0;}
+  .more dd{margin:0;color:var(--muted);font-size:16px;}
+
+  /* ---------- two-col facts ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+  .fact h3{font-family:"Space Grotesk",sans-serif;font-size:15px;color:var(--accent);margin:0 0 10px;font-weight:600;}
+  .fact p{margin:0 0 4px;}
+  .fact .sub{color:var(--muted);font-size:15px;font-style:italic;}
+  .fact ul{margin:0;padding-left:20px;}
+  .fact li{margin-bottom:6px;}
+  .skillrow{margin:0 0 14px;}
+  .skillrow .lab{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:14.5px;display:block;margin-bottom:2px;}
+  .skillrow .val{font-size:16px;color:var(--muted);}
+
+  /* ---------- contact / footer ---------- */
+  .contact{background:var(--ink);color:#EAEEF4;margin-top:80px;padding:64px 24px;}
+  .contact .inner{max-width:var(--maxw);margin:0 auto;}
+  .contact h2{color:#fff;}
+  .contact p{color:#B9C3D4;max-width:60ch;}
+  .contact a{color:#8FD9CF;}
+  .contact a:hover{color:#B9F0E7;}
+  .clinks{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:20px;font-family:"Space Grotesk",sans-serif;font-size:15px;}
+  footer .fine{max-width:var(--maxw);margin:0 auto;padding:22px 24px;color:var(--faint);font-size:13px;font-family:"Space Grotesk",sans-serif;}
+
+  @media (max-width:720px){
+    nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);
+      border-bottom:1px solid var(--line);flex-direction:column;gap:0;padding:8px 24px 16px;}
+    nav.open{display:flex;}
+    .navlink{padding:10px 0;border-top:1px solid var(--line);}
+    .menu-btn{display:inline-block;}
+    .cols{grid-template-columns:1fr;gap:34px;}
+    .more .row{grid-template-columns:1fr;gap:2px;}
+    .pub.flag{margin-left:0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .hero .signal{transition:none;opacity:1;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top">Imran Ali <span>Soomro</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Section navigation">
+      <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#research">Research</a>
+      <a class="navlink" href="#projects">Projects</a>
+      <a class="navlink" href="#skills">Skills</a>
+      <a class="navlink" href="#background">Background</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<div class="hero" id="hero">
+  <svg class="signal" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="var(--accent)"/>
+        <stop offset="1" stop-color="var(--signal)"/>
+      </linearGradient>
+    </defs>
+    <g stroke="url(#g)" fill="none" stroke-width="1" opacity="0.10">
+      <!-- faint concentric "spectral rings": a hidden signal beneath the surface -->
+      <circle cx="720" cy="150" r="60"/><circle cx="720" cy="150" r="110"/>
+      <circle cx="720" cy="150" r="170"/><circle cx="720" cy="150" r="240"/>
+      <circle cx="720" cy="150" r="320"/>
+    </g>
+    <g stroke="url(#g)" fill="none" stroke-width="1" opacity="0.08">
+      <path d="M0 430 Q112 390 225 430 T450 430 T675 430 T900 430"/>
+      <path d="M0 455 Q112 415 225 455 T450 455 T675 455 T900 455"/>
+      <path d="M0 480 Q112 440 225 480 T450 480 T675 480 T900 480"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <h1>Imran Ali Soomro</h1>
+    <p class="role">Machine Learning Researcher &nbsp;/&nbsp; <b>M.S. Software Engineering</b>, Hohai University &nbsp;/&nbsp; Nanjing, China</p>
+    <p class="lede">I study the robustness of image watermarking and content protection, building and evaluating attacks that test how well today's defenses actually hold up.</p>
+    <div class="actions">
+      <a class="btn primary" href="#research">Read the research</a>
+      <a class="btn" href="./Imran_Ali_Soomro_CV.pdf">Download CV</a>
+      <a class="btn" href="https://scholar.google.com/citations?hl=en&user=CCVxu5EAAAAJ">Google Scholar</a>
+      <a class="btn" href="https://github.com/Imran-Ali-Soomro">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/imran-ali-soomro-9732a81b8/">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<div class="divide"><hr/></div>
+
+<section id="about">
+  <div class="h-wrap"><h2>About</h2></div>
+  <div class="prose">
+    <p>I am a machine learning researcher and M.S. Software Engineering candidate at Hohai University, advised by Prof. Ping Ping. My work sits at the meeting point of computer vision and security: I design and evaluate attacks against image-watermarking systems to understand how well the methods meant to protect and authenticate images hold up under pressure.</p>
+    <p>To run that work rigorously, I built a multi-model research platform that coordinates several local and remote language models and evaluates watermarking schemes at scale, across more than 100,000 images with proper statistical testing. I am now looking to bring this focus on robustness, evaluation, and red-teaming to empirical AI safety research on frontier AI systems.</p>
+  </div>
+  <div style="margin-top:26px;">
+    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--accent);margin:0 0 10px;">Research interests</h3>
+    <ul class="chips">
+      <li>Image Watermarking &amp; Attacks</li>
+      <li>Adversarial Robustness</li>
+      <li>Diffusion &amp; Generative Models</li>
+      <li>Large Language Models &amp; AI Agents</li>
+      <li>AI Safety &amp; Model Evaluation</li>
+      <li>Computer Vision</li>
+      <li>Image Processing &amp; Protection</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divide"><hr/></div>
+
+<section id="research">
+  <div class="h-wrap"><h2>Research &amp; Publications</h2></div>
+
+  <div class="pubgroup">
+    <h3>Submitted</h3>
+    <div class="pub flag">
+      <p class="authors"><b>Imran Ali Soomro</b>, Ping Ping</p>
+      <p class="title">Erasing the Invisible: Anomaly-Gated Attention for Fidelity-Preserving Diffusion Watermark Removal <span class="tag">AI security</span></p>
+      <p><span class="venue">IEEE Transactions on Information Forensics and Security</span></p>
+      <p class="meta">First author · diffusion-based watermark-removal attack for evaluating image-protection defenses</p>
+    </div>
+    <div class="pub">
+      <p class="authors">S. Abbas, S. Abbas, <b>Imran Ali Soomro</b>, M. Hussain, H. Zafar, Ahmad</p>
+      <p class="title">SPQG-YOLO26: Structure-Preserving Quality-Guided P3 Refinement for Lightweight Low-Light Object Detection</p>
+      <p><span class="venue">Applied Soft Computing</span></p>
+    </div>
+  </div>
+
+  <div class="pubgroup">
+    <h3>Under review</h3>
+    <div class="pub">
+      <p class="authors"><b>Imran Ali Soomro</b>, S. Abbas, S. Mazhar, A. Habib, T. A. Arain, A. Rahim</p>
+      <p class="title">SAG-SSNet: Scene-Adaptive Gated Spatiotemporal Segmentation Network for Robust Winter Road Segmentation</p>
+      <p><span class="venue">Image and Vision Computing</span> (Elsevier), 2026</p>
+      <p class="meta">First author</p>
+    </div>
+    <div class="pub">
+      <p class="authors"><b>Imran Ali Soomro</b>, A. Habib, S. Abbas, M. H. Zahoor</p>
+      <p class="title">A Residual Frequency–Temporal Network for Long-Horizon CPU Utilisation Forecasting in Cloud Data Centres</p>
+      <p><span class="venue">Computing</span> (Springer)</p>
+      <p class="meta">First author</p>
+    </div>
+  </div>
+
+  <div class="pubgroup">
+    <h3>Published</h3>
+    <div class="pub">
+      <p class="authors">T. A. Arain, P. C. Zhang, S. Mazhar, Q. Meng, <b>Imran Ali Soomro</b></p>
+      <p class="title">Attention-guided multi-feature fusion hybrid architecture for person re-identification in smart surveillance systems</p>
+      <p><span class="venue">Image and Vision Computing</span> (Elsevier), 2026</p>
+      <p class="meta"><a href="https://doi.org/10.1016/j.imavis.2026.106014">doi:10.1016/j.imavis.2026.106014</a></p>
+    </div>
+    <div class="pub">
+      <p class="authors">M. M. Raza, <b>Imran Ali Soomro</b>, W. U. Khan, M. Q. Iqbal</p>
+      <p class="title">Generative Artificial Intelligence in Software Engineering: Redefining Programming Paradigms and Development Practices</p>
+      <p><span class="venue">Spectrum of Engineering Sciences</span>, vol. 3, no. 10, pp. 335–348, 2025</p>
+    </div>
+  </div>
+</section>
+
+<div class="divide"><hr/></div>
+
+<section id="projects">
+  <div class="h-wrap"><h2>Projects</h2></div>
+
+  <div class="proj">
+    <h3>InvisibleWatermarkLab</h3>
+    <p class="kicker">Multi-agent AI research platform for invisible-watermark robustness research</p>
+    <ul>
+      <li>Orchestrates five LLMs (local: Qwen3.5-9B, Kimi-VL, gpt-oss-20b; remote: Nemotron, GLM) with automatic task-based routing, behind a FastAPI backend and a React 19 + TypeScript frontend.</li>
+      <li>Custom Model Context Protocol (MCP) server integrating an external agent runtime, with end-to-end cross-process tool discovery and a security-tested read-only data boundary.</li>
+      <li>Process-safe GPU resource-lease system (cross-process file locking and PID-liveness detection) to prevent VRAM contention, verified with real multi-process concurrency tests.</li>
+      <li>Ran 8 large-scale experiments (100k+ generated and attacked images) evaluating 9 invisible-watermarking schemes against diffusion-reconstruction and geometric attacks, with bootstrap confidence intervals and paired Wilcoxon significance tests; 138+ automated tests.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Python, FastAPI, PyTorch, Diffusers / Transformers, React, TypeScript, Vite, MCP</p>
+  </div>
+
+  <div class="proj">
+    <h3>AutoLabler</h3>
+    <p class="kicker">AI-powered full-stack image-annotation tool</p>
+    <ul>
+      <li>FastAPI backend with a React (Fabric.js) labeling canvas, unifying five vision models (YOLO11, YOLO-World, SAM, SAM2, DINOv3) behind one API with dynamic GPU load and unload.</li>
+      <li>One-click auto-labeling, click and box-prompt interactive segmentation, and export to YOLO, COCO, Pascal VOC, and LabelMe formats; Docker deployment with GPU passthrough.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Python, FastAPI, React, PyTorch, Ultralytics YOLO, SAM / SAM2, DINOv3, Docker</p>
+  </div>
+
+  <div class="proj">
+    <h3>FootballVision</h3>
+    <p class="kicker">Automated football-match analysis pipeline</p>
+    <ul>
+      <li>Custom-trained YOLOv5 for player, ball, and referee detection, tuned to ignore people off the pitch.</li>
+      <li>Per-player tracking with K-Means team assignment by jersey color, optical-flow camera-motion compensation, and possession tracking; usable through a CLI and a Streamlit web app.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Python, YOLOv5, Ultralytics, OpenCV, NumPy, Pandas, Streamlit</p>
+  </div>
+
+  <div class="more">
+    <dl>
+      <div class="row"><dt>HaptiCare</dt><dd>VR physiotherapy system with a haptic jacket for rotator-cuff rehabilitation (Best FYP Award).</dd></div>
+      <div class="row"><dt>Brain-Stroke Prediction</dt><dd>Multimodal machine-learning system to detect and predict strokes in support of clinical decisions.</dd></div>
+      <div class="row"><dt>Driver Drowsiness Detection</dt><dd>Real-time alertness monitor using MobileNetV2 on a Raspberry Pi.</dd></div>
+      <div class="row"><dt>Smart Acoustical Eye</dt><dd>YOLOv8 detection with spoken audio feedback to assist visually impaired users.</dd></div>
+      <div class="row"><dt>Snow-Road Slipperiness</dt><dd>Real-time YOLOv8 segmentation of snow-covered roads with slippery-level classification.</dd></div>
+      <div class="row"><dt>Vehicle Tracking System</dt><dd>Real-time vehicle detection and multi-object tracking from video.</dd></div>
+    </dl>
+    <p style="margin-top:16px;"><a href="https://github.com/Imran-Ali-Soomro">See more on GitHub</a></p>
+  </div>
+</section>
+
+<div class="divide"><hr/></div>
+
+<section id="skills">
+  <div class="h-wrap"><h2>Technical Skills</h2></div>
+  <div class="cols">
+    <div>
+      <div class="skillrow"><span class="lab">ML &amp; Deep Learning</span><span class="val">PyTorch, TensorFlow, Keras; GANs and diffusion models, generative models, adversarial methods, transfer learning</span></div>
+      <div class="skillrow"><span class="lab">LLMs &amp; GenAI</span><span class="val">LLMs, RAG, multi-agent orchestration, Model Context Protocol (MCP); Hugging Face Transformers and Diffusers; NLP, ViT</span></div>
+      <div class="skillrow"><span class="lab">Computer Vision</span><span class="val">OpenCV, YOLO (v5/11/World), SAM and SAM2, DINOv3, Faster R-CNN, Detectron, MediaPipe, OpenPose; detection, segmentation, tracking</span></div>
+    </div>
+    <div>
+      <div class="skillrow"><span class="lab">Data &amp; Scientific</span><span class="val">NumPy, Pandas, SciPy, scikit-learn, Matplotlib; SQL; statistical testing (bootstrap CIs, Wilcoxon)</span></div>
+      <div class="skillrow"><span class="lab">Engineering</span><span class="val">Python, C, C++, C#, Java; FastAPI, React and TypeScript, Docker; Git, Linux; Raspberry Pi</span></div>
+      <div class="skillrow"><span class="lab">Certifications</span><span class="val">Machine Learning Specialization (Stanford &amp; DeepLearning.AI); IBM Data Science Professional Certificate; IELTS Academic; HSK 3</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divide"><hr/></div>
+
+<section id="background">
+  <div class="h-wrap"><h2>Background</h2></div>
+  <div class="cols">
+    <div class="fact">
+      <h3>Education</h3>
+      <p><b>M.S., Software Engineering</b></p>
+      <p class="sub">Hohai University, Nanjing · 2024–present · Advisor: Prof. Ping Ping</p>
+      <p style="margin-top:14px;"><b>B.E., Computer Systems Engineering</b></p>
+      <p class="sub">MUET, Jamshoro · 2019–2023 · Final grade A+ · Thesis: HaptiCare</p>
+    </div>
+    <div class="fact">
+      <h3>Honours &amp; awards</h3>
+      <ul>
+        <li>Jiangsu Government Scholarship (2025)</li>
+        <li>Hohai University Scholarship (2024)</li>
+        <li>Best Final-Year Project Award, MUET (2023)</li>
+        <li>2nd Place &amp; Silver Medal, Belt &amp; Road Initiative O-Tour (2025)</li>
+      </ul>
+      <h3 style="margin-top:20px;">Languages</h3>
+      <p class="sub">Urdu (native) · English (IELTS, CEFR C1–C2) · Chinese (HSK 3)</p>
+    </div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <div class="inner">
+    <div class="h-wrap"><h2>Get in touch</h2></div>
+    <p>Open to research collaboration and to conversations about AI safety, robustness, and watermarking. The fastest way to reach me is email.</p>
+    <div class="clinks">
+      <a href="mailto:isoomro179@gmail.com">isoomro179@gmail.com</a>
+      <a href="https://scholar.google.com/citations?hl=en&user=CCVxu5EAAAAJ">Google Scholar</a>
+      <a href="https://github.com/Imran-Ali-Soomro">GitHub</a>
+      <a href="https://www.linkedin.com/in/imran-ali-soomro-9732a81b8/">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="fine">© <span id="yr"></span> Imran Ali Soomro · Nanjing, China</p>
+</footer>
+
+<script>
+  // one-time hero reveal of the "hidden signal"
+  window.addEventListener('load', function(){
+    var h = document.getElementById('hero');
+    if (h) requestAnimationFrame(function(){ h.classList.add('revealed'); });
+  });
+  // mobile menu
+  var btn = document.querySelector('.menu-btn'), nav = document.getElementById('nav');
+  if (btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if (e.target.classList.contains('navlink')){ nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    });
+  }
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
