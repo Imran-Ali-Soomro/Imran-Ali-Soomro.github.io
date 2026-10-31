@@ -53,9 +53,9 @@
   .hero::before{
     content:"";
     position:absolute;
-    inset:5% 0 auto auto;
-    width:48%;
-    height:80%;
+    inset:8% 0 auto auto;
+    width:46%;
+    height:82%;
     background:radial-gradient(circle at 30% 30%, rgba(94,106,207,.12), rgba(94,106,207,0) 60%);
     filter:blur(18px);
     pointer-events:none;
@@ -63,23 +63,32 @@
   .hero .signal{
     position:absolute;inset:0;pointer-events:none;opacity:0;
     transition:opacity 1.4s ease;
-    animation:signalDrift 20s ease-in-out infinite alternate;
+    animation:signalDrift 22s ease-in-out infinite alternate;
   }
   .hero .signal .ring,
-  .hero .signal .wave{
+  .hero .signal .beam,
+  .hero .signal .node,
+  .hero .signal .grid,
+  .hero .signal .arc,
+  .hero .signal .scan,
+  .hero .signal .pulse {
     transform-box: fill-box;
     transform-origin: center;
   }
   .hero .signal .ring{
-    animation:ringOrbital 14s ease-in-out infinite alternate;
+    animation:ringOrbit 14s ease-in-out infinite alternate;
     stroke-linecap:round;
   }
   .hero .signal .ring.ring-1{ animation-delay:0s; }
   .hero .signal .ring.ring-2{ animation-delay:-2s; }
   .hero .signal .ring.ring-3{ animation-delay:-4s; }
   .hero .signal .ring.ring-4{ animation-delay:-6s; }
-  .hero .signal .ring.ring-5{ animation-delay:-8s; }
-  .hero .signal .wave{ animation:waveGlide 12s ease-in-out infinite; }
+  .hero .signal .beam{ animation:beamSweep 18s ease-in-out infinite; }
+  .hero .signal .node{ animation:nodeGlow 9s ease-in-out infinite; }
+  .hero .signal .grid{ animation:gridShift 16s ease-in-out infinite alternate; }
+  .hero .signal .arc{ animation:arcPulse 11s ease-in-out infinite; }
+  .hero .signal .scan{ animation:scanMove 13s linear infinite; }
+  .hero .signal .pulse{ animation:pulseHalo 7s ease-in-out infinite; }
   .hero.revealed .signal{opacity:1;}
   .hero-inner{position:relative;max-width:var(--maxw);margin:0 auto;}
   .hero h1{
@@ -161,20 +170,41 @@
   footer .fine{max-width:var(--maxw);margin:0 auto;padding:22px 24px;color:var(--faint);font-size:13px;font-family:"Space Grotesk",sans-serif;}
 
   @keyframes signalDrift {
-    0% { transform: translate3d(-10px, 12px, 0) scale(0.98); }
-    50% { transform: translate3d(8px, -10px, 0) scale(1.04); }
+    0% { transform: translate3d(-12px, 10px, 0) scale(0.98); }
+    50% { transform: translate3d(8px, -12px, 0) scale(1.04); }
     100% { transform: translate3d(20px, 8px, 0) scale(1.08); }
   }
-  @keyframes ringOrbital {
-    0% { opacity: 0.08; transform: translate3d(-10px, 18px, 0) scale(0.94); }
-    25% { opacity: 0.14; transform: translate3d(10px, -10px, 0) scale(1.02); }
-    50% { opacity: 0.18; transform: translate3d(18px, 6px, 0) scale(1.07); }
-    75% { opacity: 0.12; transform: translate3d(-8px, 14px, 0) scale(1.04); }
-    100% { opacity: 0.1; transform: translate3d(0, 0, 0) scale(0.98); }
+  @keyframes ringOrbit {
+    0% { opacity: 0.08; transform: translate3d(-12px, 16px, 0) scale(0.94) rotate(-6deg); }
+    25% { opacity: 0.14; transform: translate3d(10px, -10px, 0) scale(1.02) rotate(6deg); }
+    50% { opacity: 0.2; transform: translate3d(18px, 6px, 0) scale(1.07) rotate(15deg); }
+    75% { opacity: 0.12; transform: translate3d(-8px, 12px, 0) scale(1.04) rotate(-8deg); }
+    100% { opacity: 0.09; transform: translate3d(0, 0, 0) scale(0.98) rotate(0deg); }
   }
-  @keyframes waveGlide {
-    0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.06; }
-    50% { transform: translate3d(10px, -12px, 0); opacity: 0.14; }
+  @keyframes beamSweep {
+    0%, 100% { opacity: 0.06; transform: translate3d(0, 0, 0); }
+    50% { opacity: 0.18; transform: translate3d(12px, -8px, 0); }
+  }
+  @keyframes nodeGlow {
+    0%, 100% { opacity: 0.5; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  @keyframes gridShift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(14px, -12px, 0) scale(1.04); }
+  }
+  @keyframes arcPulse {
+    0%,100% { opacity: 0.08; }
+    50% { opacity: 0.22; }
+  }
+  @keyframes scanMove {
+    0% { transform: translate3d(-18px, 8px, 0); opacity: 0.06; }
+    50% { transform: translate3d(10px, -10px, 0); opacity: 0.15; }
+    100% { transform: translate3d(20px, 4px, 0); opacity: 0.08; }
+  }
+  @keyframes pulseHalo {
+    0%,100% { opacity: 0.1; transform: scale(0.9); }
+    50% { opacity: 0.22; transform: scale(1.12); }
   }
 
   @media (max-width:720px){
@@ -190,7 +220,7 @@
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     .hero .signal{transition:none;opacity:1;animation:none;}
-    .hero .signal .ring, .hero .signal .wave{animation:none;}
+    .hero .signal .ring, .hero .signal .beam, .hero .signal .node, .hero .signal .grid, .hero .signal .arc, .hero .signal .scan, .hero .signal .pulse{animation:none;}
   }
 </style>
 </head>
@@ -220,23 +250,54 @@
         <stop offset="1" stop-color="var(--signal)"/>
       </linearGradient>
     </defs>
-    <g class="ring ring-1" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.10">
-      <circle cx="720" cy="150" r="60"/><circle cx="720" cy="150" r="110"/>
-      <circle cx="720" cy="150" r="170"/><circle cx="720" cy="150" r="240"/>
-      <circle cx="720" cy="150" r="320"/>
+
+    <g class="pulse" stroke="url(#g)" fill="none" stroke-width="0.9" opacity="0.15">
+      <circle cx="710" cy="150" r="120"/>
+      <circle cx="710" cy="150" r="180"/>
     </g>
-    <g class="ring ring-2" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.08">
-      <circle cx="760" cy="180" r="90"/>
-      <circle cx="760" cy="180" r="150"/>
+
+    <g class="grid" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.11">
+      <path d="M560 60 L820 60 M560 110 L840 110 M560 160 L840 160 M560 210 L820 210"/>
+      <path d="M590 60 L710 260 M660 60 L770 260 M735 60 L820 200"/>
     </g>
-    <g class="ring ring-3" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.06">
-      <circle cx="680" cy="120" r="40"/>
-      <circle cx="680" cy="120" r="80"/>
+
+    <g class="ring ring-1" stroke="url(#g)" fill="none" stroke-width="1.2" opacity="0.18">
+      <circle cx="710" cy="150" r="54"/>
+      <circle cx="710" cy="150" r="112"/>
+      <circle cx="710" cy="150" r="178"/>
+      <circle cx="710" cy="150" r="243"/>
     </g>
-    <g class="wave" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.08">
-      <path d="M0 430 Q112 390 225 430 T450 430 T675 430 T900 430"/>
-      <path d="M0 455 Q112 415 225 455 T450 455 T675 455 T900 455"/>
-      <path d="M0 480 Q112 440 225 480 T450 480 T675 480 T900 480"/>
+
+    <g class="ring ring-2" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.14" stroke-dasharray="5 10">
+      <path d="M770 100 L830 155 L770 210 L675 210 L615 155 L675 100 Z"/>
+      <path d="M650 80 L805 80 L860 150 L805 220 L650 220 L595 150 Z"/>
+    </g>
+
+    <g class="arc" stroke="url(#g)" fill="none" stroke-width="1.1" opacity="0.16">
+      <path d="M630 320 C700 260, 790 260, 860 320"/>
+      <path d="M620 350 C700 300, 790 300, 870 350"/>
+    </g>
+
+    <g class="beam" stroke="url(#g)" fill="none" stroke-width="0.9" opacity="0.2">
+      <path d="M610 120 Q760 70 840 150"/>
+      <path d="M570 190 Q700 140 820 220"/>
+      <path d="M610 250 Q760 220 860 290"/>
+    </g>
+
+    <g class="scan" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.17">
+      <path d="M440 420 L820 420"/>
+      <path d="M470 445 L790 445"/>
+      <path d="M500 470 L760 470"/>
+    </g>
+
+    <g class="node" fill="url(#g)" opacity="0.9">
+      <circle cx="710" cy="150" r="4"/>
+      <circle cx="770" cy="100" r="3.5"/>
+      <circle cx="830" cy="155" r="3.5"/>
+      <circle cx="770" cy="210" r="3.5"/>
+      <circle cx="675" cy="210" r="3.5"/>
+      <circle cx="615" cy="155" r="3.5"/>
+      <circle cx="675" cy="100" r="3.5"/>
     </g>
   </svg>
   <div class="hero-inner">
