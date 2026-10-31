@@ -53,27 +53,27 @@
   .hero::before{
     content:"";
     position:absolute;
-    inset:8% 0 auto auto;
-    width:44%;
-    height:78%;
-    background:radial-gradient(circle at 30% 30%, rgba(94,106,207,.12), rgba(94,106,207,0) 60%);
+    inset:6% 6% auto auto;
+    width:38%;
+    height:74%;
+    background:radial-gradient(circle at 30% 25%, rgba(94,106,207,.10), rgba(94,106,207,0) 64%);
     filter:blur(18px);
     pointer-events:none;
   }
   .hero .signal{
     position:absolute;inset:0;pointer-events:none;opacity:0;
     transition:opacity 1.4s ease;
-    animation:signalDrift 20s ease-in-out infinite alternate;
+    animation:signalDrift 18s ease-in-out infinite alternate;
   }
-  .hero .signal .network,
-  .hero .signal .network-sheen,
-  .hero .signal .pulse-node {
+  .hero .signal .graph,
+  .hero .signal .graph-soft,
+  .hero .signal .node{
     transform-box: fill-box;
     transform-origin: center;
   }
-  .hero .signal .network{ animation:networkFloat 18s ease-in-out infinite alternate; }
-  .hero .signal .network-sheen{ animation:networkGlow 12s ease-in-out infinite alternate; }
-  .hero .signal .pulse-node{ animation:pulseNode 7s ease-in-out infinite; }
+  .hero .signal .graph{ animation:networkFloat 16s ease-in-out infinite alternate; }
+  .hero .signal .graph-soft{ animation:networkFade 12s ease-in-out infinite alternate; }
+  .hero .signal .node{ animation:pulseNode 7s ease-in-out infinite; }
   .hero.revealed .signal{opacity:1;}
   .hero-inner{position:relative;max-width:var(--maxw);margin:0 auto;}
   .hero h1{
@@ -155,22 +155,22 @@
   footer .fine{max-width:var(--maxw);margin:0 auto;padding:22px 24px;color:var(--faint);font-size:13px;font-family:"Space Grotesk",sans-serif;}
 
   @keyframes signalDrift {
-    0% { transform: translate3d(-12px, 8px, 0) scale(0.98); }
-    50% { transform: translate3d(12px, -12px, 0) scale(1.04); }
-    100% { transform: translate3d(18px, 10px, 0) scale(1.08); }
+    0% { transform: translate3d(-10px, 12px, 0) scale(0.98); }
+    50% { transform: translate3d(12px, -10px, 0) scale(1.03); }
+    100% { transform: translate3d(18px, 6px, 0) scale(1.06); }
   }
   @keyframes networkFloat {
-    0% { opacity: 0.08; transform: translate3d(-8px, 10px, 0) scale(0.97); }
-    50% { opacity: 0.18; transform: translate3d(10px, -10px, 0) scale(1.03); }
-    100% { opacity: 0.12; transform: translate3d(16px, 6px, 0) scale(1.06); }
+    0% { opacity: 0.08; transform: translate3d(-10px, 12px, 0) scale(0.98); }
+    50% { opacity: 0.18; transform: translate3d(8px, -10px, 0) scale(1.02); }
+    100% { opacity: 0.12; transform: translate3d(18px, 6px, 0) scale(1.06); }
   }
-  @keyframes networkGlow {
-    0%, 100% { opacity: 0.08; }
-    50% { opacity: 0.22; }
+  @keyframes networkFade {
+    0%,100% { opacity: 0.08; }
+    50% { opacity: 0.16; }
   }
   @keyframes pulseNode {
-    0%, 100% { opacity: 0.5; transform: scale(0.9); }
-    50% { opacity: 1; transform: scale(1.15); }
+    0%,100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
   }
 
   @media (max-width:720px){
@@ -186,7 +186,7 @@
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     .hero .signal{transition:none;opacity:1;animation:none;}
-    .hero .signal .network, .hero .signal .network-sheen, .hero .signal .pulse-node{animation:none;}
+    .hero .signal .graph, .hero .signal .graph-soft, .hero .signal .node{animation:none;}
   }
 </style>
 </head>
@@ -217,42 +217,34 @@
       </linearGradient>
     </defs>
 
-    <g class="network-sheen" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.18">
-      <path d="M540 115 L675 150 L710 260 L642 360"/>
-      <path d="M635 122 L790 170 L820 290 L740 370"/>
-      <path d="M560 200 L640 220 L690 315 L610 415"/>
-      <path d="M715 110 L815 150 L870 248 L810 365"/>
+    <g class="graph-soft" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.12">
+      <path d="M540 100 L640 150 L700 245 L640 330 L545 380 L470 330 L438 240 L500 150 Z"/>
+      <path d="M610 120 L740 175 L800 265 L760 345 L670 385 L585 330 L550 240 L605 165 Z"/>
     </g>
 
-    <g class="network" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.16">
-      <path d="M560 100 L660 150 L720 250 L660 340 L560 390 L470 330 L430 220 L500 120 Z"/>
-      <path d="M650 120 L760 170 L810 260 L760 340 L660 385 L585 330 L545 230 L600 150 Z"/>
-      <path d="M475 185 L560 205 L620 275 L580 360 L485 350 L430 270 Z"/>
-      <path d="M620 210 L720 220 L785 290 L740 360 L645 350 L600 285 Z"/>
+    <g class="graph" stroke="url(#g)" fill="none" stroke-width="1" opacity="0.16">
+      <path d="M505 160 L600 185 L680 250 L640 325 L545 350 L475 305 L450 220 Z"/>
+      <path d="M600 185 L705 200 L770 260 L745 330 L660 355 L590 325 L555 245 Z"/>
+      <path d="M545 350 L635 365 L710 430"/>
+      <path d="M470 330 L500 260 L565 205"/>
     </g>
 
-    <g class="pulse-node" fill="url(#g)">
-      <circle cx="560" cy="100" r="3.2"/>
-      <circle cx="660" cy="150" r="3.2"/>
-      <circle cx="720" cy="250" r="4"/>
-      <circle cx="660" cy="340" r="3.2"/>
-      <circle cx="560" cy="390" r="3.2"/>
-      <circle cx="470" cy="330" r="3.2"/>
-      <circle cx="430" cy="220" r="3.2"/>
-      <circle cx="500" cy="120" r="3.2"/>
-      <circle cx="760" cy="170" r="3.2"/>
-      <circle cx="810" cy="260" r="3.5"/>
-      <circle cx="760" cy="340" r="3.2"/>
-      <circle cx="660" cy="385" r="3.2"/>
-      <circle cx="585" cy="330" r="3.2"/>
-      <circle cx="545" cy="230" r="3.2"/>
-      <circle cx="600" cy="150" r="3.2"/>
-      <circle cx="620" cy="210" r="3.2"/>
-      <circle cx="720" cy="220" r="3.5"/>
-      <circle cx="785" cy="290" r="3.5"/>
-      <circle cx="740" cy="360" r="3.2"/>
-      <circle cx="645" cy="350" r="3.2"/>
-      <circle cx="600" cy="285" r="3.2"/>
+    <g class="node" fill="url(#g)">
+      <circle cx="505" cy="160" r="3.1"/>
+      <circle cx="600" cy="185" r="3.1"/>
+      <circle cx="680" cy="250" r="3.4"/>
+      <circle cx="640" cy="325" r="3.1"/>
+      <circle cx="545" cy="350" r="3.1"/>
+      <circle cx="475" cy="305" r="3.1"/>
+      <circle cx="450" cy="220" r="3.1"/>
+      <circle cx="705" cy="200" r="3.1"/>
+      <circle cx="770" cy="260" r="3.6"/>
+      <circle cx="745" cy="330" r="3.1"/>
+      <circle cx="660" cy="355" r="3.1"/>
+      <circle cx="590" cy="325" r="3.1"/>
+      <circle cx="555" cy="245" r="3.1"/>
+      <circle cx="635" cy="365" r="3.1"/>
+      <circle cx="710" cy="430" r="3.1"/>
     </g>
   </svg>
   <div class="hero-inner">
