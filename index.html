@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Imran Ali Soomro — Machine Learning Researcher</title>
-<meta name="description" content="Imran Ali Soomro — machine learning researcher (M.S. Software Engineering, Hohai University) working on the robustness of image watermarking, watermark-removal attacks, diffusion models, and AI safety." />
+<meta name="description" content="Imran Ali Soomro — machine learning researcher (M.S. Software Engineering, Hohai University) working on the robustness of image watermarking, watermark-removal attacks, and applied computer vision." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
@@ -16,9 +16,9 @@
     --muted:#556079;
     --faint:#8A93A6;
     --line:#E4E8EE;
-    --accent:#0E6E63;         /* deep spectral teal */
+    --accent:#0E6E63;
     --accent-deep:#0A4F48;
-    --signal:#5A6ACF;         /* the "hidden signal" hue, used faintly */
+    --signal:#5A6ACF;
     --maxw:900px;
   }
   *{box-sizing:border-box;}
@@ -33,7 +33,6 @@
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
   h1,h2,h3,nav,.mono,.tag,.eyebrow,.navlink,.btn{font-family:"Space Grotesk",system-ui,sans-serif;}
 
-  /* ---------- header ---------- */
   header{
     position:sticky;top:0;z-index:20;background:rgba(246,247,249,.82);
     backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);
@@ -50,7 +49,6 @@
   .divide{max-width:var(--maxw);margin:0 auto;}
   .divide hr{border:none;border-top:1px solid var(--line);margin:64px 24px;}
 
-  /* ---------- hero ---------- */
   .hero{position:relative;padding:96px 24px 40px;overflow:hidden;}
   .hero .signal{
     position:absolute;inset:0;pointer-events:none;opacity:0;
@@ -74,7 +72,6 @@
   .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
   .btn.primary:hover{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff;}
 
-  /* ---------- section headings ---------- */
   .h-wrap{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;}
   h2{font-size:clamp(24px,3.4vw,30px);letter-spacing:-.02em;font-weight:600;margin:0;}
   .h-wrap .idx{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--accent);font-weight:600;}
@@ -83,12 +80,10 @@
   .prose{max-width:68ch;}
   .prose p{color:#1c2740;}
 
-  /* research interests */
   .chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:6px 0 0;}
   .chips li{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--ink);background:var(--panel);
     border:1px solid var(--line);border-radius:999px;padding:8px 15px;}
 
-  /* ---------- publications ---------- */
   .pubgroup{margin-top:30px;}
   .pubgroup h3{font-size:15px;font-weight:600;color:var(--accent);margin:0 0 14px;font-weight:600;letter-spacing:.01em;}
   .pub{padding:16px 0;border-top:1px solid var(--line);}
@@ -106,7 +101,6 @@
   .tag{display:inline-block;font-size:12px;font-weight:600;color:var(--accent-deep);
     background:rgba(14,110,99,.12);border-radius:6px;padding:3px 9px;margin-left:2px;vertical-align:middle;}
 
-  /* ---------- projects ---------- */
   .proj{padding:26px 0;border-top:1px solid var(--line);}
   .proj:first-of-type{border-top:none;}
   .proj h3{font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em;}
@@ -121,7 +115,6 @@
   .more dt{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:15px;margin:0;}
   .more dd{margin:0;color:var(--muted);font-size:16px;}
 
-  /* ---------- two-col facts ---------- */
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
   .fact h3{font-family:"Space Grotesk",sans-serif;font-size:15px;color:var(--accent);margin:0 0 10px;font-weight:600;}
   .fact p{margin:0 0 4px;}
@@ -132,7 +125,6 @@
   .skillrow .lab{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:14.5px;display:block;margin-bottom:2px;}
   .skillrow .val{font-size:16px;color:var(--muted);}
 
-  /* ---------- contact / footer ---------- */
   .contact{background:var(--ink);color:#EAEEF4;margin-top:80px;padding:64px 24px;}
   .contact .inner{max-width:var(--maxw);margin:0 auto;}
   .contact h2{color:#fff;}
@@ -185,7 +177,6 @@
       </linearGradient>
     </defs>
     <g stroke="url(#g)" fill="none" stroke-width="1" opacity="0.10">
-      <!-- faint concentric "spectral rings": a hidden signal beneath the surface -->
       <circle cx="720" cy="150" r="60"/><circle cx="720" cy="150" r="110"/>
       <circle cx="720" cy="150" r="170"/><circle cx="720" cy="150" r="240"/>
       <circle cx="720" cy="150" r="320"/>
@@ -215,8 +206,8 @@
 <section id="about">
   <div class="h-wrap"><h2>About</h2></div>
   <div class="prose">
-    <p>I am a machine learning researcher and M.S. Software Engineering candidate at Hohai University, advised by Prof. Ping Ping. My work sits at the meeting point of computer vision and security: I design and evaluate attacks against image-watermarking systems to understand how well the methods meant to protect and authenticate images hold up under pressure.</p>
-    <p>To run that work rigorously, I built a multi-model research platform that coordinates several local and remote language models and evaluates watermarking schemes at scale, across more than 100,000 images with proper statistical testing. I am now looking to bring this focus on robustness, evaluation, and red-teaming to empirical AI safety research on frontier AI systems.</p>
+    <p>I am a machine learning researcher and M.S. Software Engineering candidate at Hohai University, advised by Prof. Ping Ping. My work sits at the meeting point of computer vision and security, with a focus on robust image protection, generative model attacks, and evaluation frameworks for real-world AI systems.</p>
+    <p>To run that work rigorously, I built a multi-model research platform that coordinates several local and remote language models and evaluates watermarking schemes at scale, across more than one hundred thousand generated and attacked images.</p>
   </div>
   <div style="margin-top:26px;">
     <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--accent);margin:0 0 10px;">Research interests</h3>
@@ -243,28 +234,36 @@
       <p class="authors"><b>Imran Ali Soomro</b>, Ping Ping</p>
       <p class="title">Erasing the Invisible: Anomaly-Gated Attention for Fidelity-Preserving Diffusion Watermark Removal <span class="tag">AI security</span></p>
       <p><span class="venue">IEEE Transactions on Information Forensics and Security</span></p>
-      <p class="meta">First author · diffusion-based watermark-removal attack for evaluating image-protection defenses</p>
     </div>
     <div class="pub">
       <p class="authors">S. Abbas, S. Abbas, <b>Imran Ali Soomro</b>, M. Hussain, H. Zafar, Ahmad</p>
       <p class="title">SPQG-YOLO26: Structure-Preserving Quality-Guided P3 Refinement for Lightweight Low-Light Object Detection</p>
       <p><span class="venue">Applied Soft Computing</span></p>
     </div>
+    <div class="pub">
+      <p class="authors"><b>Imran Ali Soomro</b>, S. Abbas, S. Mazhar, A. Habib, T. A. Arain, A. Rahim</p>
+      <p class="title">SAG-SSNet: Scene-Adaptive Gated Spatiotemporal Segmentation Network for Robust Winter Road Segmentation</p>
+      <p><span class="venue">Image and Vision Computing</span> (Elsevier)</p>
+    </div>
   </div>
 
   <div class="pubgroup">
     <h3>Under review</h3>
     <div class="pub">
-      <p class="authors"><b>Imran Ali Soomro</b>, S. Abbas, S. Mazhar, A. Habib, T. A. Arain, A. Rahim</p>
-      <p class="title">SAG-SSNet: Scene-Adaptive Gated Spatiotemporal Segmentation Network for Robust Winter Road Segmentation</p>
-      <p><span class="venue">Image and Vision Computing</span> (Elsevier), 2026</p>
+      <p class="authors"><b>Imran Ali Soomro</b>, A. Habib, S. Abbas, M. H. Zahoor</p>
+      <p class="title">R-DCRNet: Recurrent Daily-Context Residual Refinement for Multi-Step Cloud CPU Utilisation Forecasting</p>
+      <p><span class="venue">Computing</span> (Springer)</p>
       <p class="meta">First author</p>
     </div>
     <div class="pub">
-      <p class="authors"><b>Imran Ali Soomro</b>, A. Habib, S. Abbas, M. H. Zahoor</p>
-      <p class="title">A Residual Frequency–Temporal Network for Long-Horizon CPU Utilisation Forecasting in Cloud Data Centres</p>
-      <p><span class="venue">Computing</span> (Springer)</p>
-      <p class="meta">First author</p>
+      <p class="authors">A. Habib, <b>Imran Ali Soomro</b></p>
+      <p class="title">Region-Level Correction in Post-Treatment Glioma Segmentation: A Controlled Comparison of Factorised and Monolithic Models</p>
+      <p><span class="venue">Discover Computer Vision</span> (Springer)</p>
+    </div>
+    <div class="pub">
+      <p class="authors">S. Mazhar, T. A. Arain, B. Mazhar, M. Ali, <b>Imran Ali Soomro</b>, R. B. Baloch</p>
+      <p class="title">Beyond Accuracy: A Structured Uncertainty Perspective on Robust Occluded Person Re-Identification</p>
+      <p><span class="venue">Neurocomputing</span> (Elsevier)</p>
     </div>
   </div>
 
@@ -293,10 +292,9 @@
     <h3>InvisibleWatermarkLab</h3>
     <p class="kicker">Multi-agent AI research platform for invisible-watermark robustness research</p>
     <ul>
-      <li>Orchestrates five LLMs (local: Qwen3.5-9B, Kimi-VL, gpt-oss-20b; remote: Nemotron, GLM) with automatic task-based routing, behind a FastAPI backend and a React 19 + TypeScript frontend.</li>
-      <li>Custom Model Context Protocol (MCP) server integrating an external agent runtime, with end-to-end cross-process tool discovery and a security-tested read-only data boundary.</li>
-      <li>Process-safe GPU resource-lease system (cross-process file locking and PID-liveness detection) to prevent VRAM contention, verified with real multi-process concurrency tests.</li>
-      <li>Ran 8 large-scale experiments (100k+ generated and attacked images) evaluating 9 invisible-watermarking schemes against diffusion-reconstruction and geometric attacks, with bootstrap confidence intervals and paired Wilcoxon significance tests; 138+ automated tests.</li>
+      <li>Orchestrates multiple local and remote language models with task-based routing behind a FastAPI backend and a React frontend.</li>
+      <li>Evaluates watermarking defenses under adversarial attack settings, diffusion-based reconstruction, and geometric perturbations.</li>
+      <li>Supports large-scale GPU experiments using automated pipelines for evaluation, logging, and analysis.</li>
     </ul>
     <p class="stack"><b>Stack:</b> Python, FastAPI, PyTorch, Diffusers / Transformers, React, TypeScript, Vite, MCP</p>
   </div>
@@ -305,8 +303,8 @@
     <h3>AutoLabler</h3>
     <p class="kicker">AI-powered full-stack image-annotation tool</p>
     <ul>
-      <li>FastAPI backend with a React (Fabric.js) labeling canvas, unifying five vision models (YOLO11, YOLO-World, SAM, SAM2, DINOv3) behind one API with dynamic GPU load and unload.</li>
-      <li>One-click auto-labeling, click and box-prompt interactive segmentation, and export to YOLO, COCO, Pascal VOC, and LabelMe formats; Docker deployment with GPU passthrough.</li>
+      <li>FastAPI backend with a React labeling canvas, unifying multiple vision models behind one API with dynamic GPU management.</li>
+      <li>One-click auto-labeling and interactive segmentation with export support across common annotation formats.</li>
     </ul>
     <p class="stack"><b>Stack:</b> Python, FastAPI, React, PyTorch, Ultralytics YOLO, SAM / SAM2, DINOv3, Docker</p>
   </div>
@@ -315,8 +313,8 @@
     <h3>FootballVision</h3>
     <p class="kicker">Automated football-match analysis pipeline</p>
     <ul>
-      <li>Custom-trained YOLOv5 for player, ball, and referee detection, tuned to ignore people off the pitch.</li>
-      <li>Per-player tracking with K-Means team assignment by jersey color, optical-flow camera-motion compensation, and possession tracking; usable through a CLI and a Streamlit web app.</li>
+      <li>Custom-trained YOLOv5 for player, ball, and referee detection tuned for football-specific scenes.</li>
+      <li>Per-player tracking with team assignment, camera-motion compensation, and possession tracking in a CLI and Streamlit app.</li>
     </ul>
     <p class="stack"><b>Stack:</b> Python, YOLOv5, Ultralytics, OpenCV, NumPy, Pandas, Streamlit</p>
   </div>
@@ -327,7 +325,7 @@
       <div class="row"><dt>Brain-Stroke Prediction</dt><dd>Multimodal machine-learning system to detect and predict strokes in support of clinical decisions.</dd></div>
       <div class="row"><dt>Driver Drowsiness Detection</dt><dd>Real-time alertness monitor using MobileNetV2 on a Raspberry Pi.</dd></div>
       <div class="row"><dt>Smart Acoustical Eye</dt><dd>YOLOv8 detection with spoken audio feedback to assist visually impaired users.</dd></div>
-      <div class="row"><dt>Snow-Road Slipperiness</dt><dd>Real-time YOLOv8 segmentation of snow-covered roads with slippery-level classification.</dd></div>
+      <div class="row"><dt>Snow-Road Slipperiness</dt><dd>Real-time segmentation of snow-covered roads with slippery-level classification.</dd></div>
       <div class="row"><dt>Vehicle Tracking System</dt><dd>Real-time vehicle detection and multi-object tracking from video.</dd></div>
     </dl>
     <p style="margin-top:16px;"><a href="https://github.com/Imran-Ali-Soomro">See more on GitHub</a></p>
@@ -340,14 +338,14 @@
   <div class="h-wrap"><h2>Technical Skills</h2></div>
   <div class="cols">
     <div>
-      <div class="skillrow"><span class="lab">ML &amp; Deep Learning</span><span class="val">PyTorch, TensorFlow, Keras; GANs and diffusion models, generative models, adversarial methods, transfer learning</span></div>
-      <div class="skillrow"><span class="lab">LLMs &amp; GenAI</span><span class="val">LLMs, RAG, multi-agent orchestration, Model Context Protocol (MCP); Hugging Face Transformers and Diffusers; NLP, ViT</span></div>
-      <div class="skillrow"><span class="lab">Computer Vision</span><span class="val">OpenCV, YOLO (v5/11/World), SAM and SAM2, DINOv3, Faster R-CNN, Detectron, MediaPipe, OpenPose; detection, segmentation, tracking</span></div>
+      <div class="skillrow"><span class="lab">ML &amp; Deep Learning</span><span class="val">PyTorch, TensorFlow, Keras; GANs and diffusion models, generative models, adversarial methods, transfer learning.</span></div>
+      <div class="skillrow"><span class="lab">LLMs &amp; GenAI</span><span class="val">LLMs, RAG, multi-agent orchestration, Model Context Protocol (MCP); Hugging Face Transformers and Diffusers.</span></div>
+      <div class="skillrow"><span class="lab">Computer Vision</span><span class="val">OpenCV, YOLO (v5/11/World), SAM and SAM2, DINOv3, Faster R-CNN, Detectron, MediaPipe, OpenPose; detection, segmentation, tracking.</span></div>
     </div>
     <div>
-      <div class="skillrow"><span class="lab">Data &amp; Scientific</span><span class="val">NumPy, Pandas, SciPy, scikit-learn, Matplotlib; SQL; statistical testing (bootstrap CIs, Wilcoxon)</span></div>
-      <div class="skillrow"><span class="lab">Engineering</span><span class="val">Python, C, C++, C#, Java; FastAPI, React and TypeScript, Docker; Git, Linux; Raspberry Pi</span></div>
-      <div class="skillrow"><span class="lab">Certifications</span><span class="val">Machine Learning Specialization (Stanford &amp; DeepLearning.AI); IBM Data Science Professional Certificate; IELTS Academic; HSK 3</span></div>
+      <div class="skillrow"><span class="lab">Data &amp; Scientific</span><span class="val">NumPy, Pandas, SciPy, scikit-learn, Matplotlib; SQL; statistical testing and evaluation.</span></div>
+      <div class="skillrow"><span class="lab">Engineering</span><span class="val">Python, C, C++, C#, Java; FastAPI, React and TypeScript, Docker; Git, Linux; Raspberry Pi.</span></div>
+      <div class="skillrow"><span class="lab">Certifications</span><span class="val">Machine Learning Specialization; IBM Data Science Professional Certificate; IELTS, HSK 3.</span></div>
     </div>
   </div>
 </section>
@@ -396,12 +394,10 @@
 </footer>
 
 <script>
-  // one-time hero reveal of the "hidden signal"
   window.addEventListener('load', function(){
     var h = document.getElementById('hero');
     if (h) requestAnimationFrame(function(){ h.classList.add('revealed'); });
   });
-  // mobile menu
   var btn = document.querySelector('.menu-btn'), nav = document.getElementById('nav');
   if (btn && nav){
     btn.addEventListener('click', function(){
